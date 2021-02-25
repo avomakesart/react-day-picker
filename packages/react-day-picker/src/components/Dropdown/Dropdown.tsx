@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useDayPicker } from '../../hooks';
+import { useDayPickerContext } from '../../hooks';
 import { UIElement } from '../../types';
 import { IconDropdown } from '../IconDropdown';
 
@@ -18,12 +18,12 @@ export interface DropdownProps {
  */
 export function Dropdown(props: DropdownProps): JSX.Element {
   const { onChange, value, children, caption, className, style } = props;
-  const { classNames, styles } = useDayPicker();
+  const { classNames, styles } = useDayPickerContext();
   return (
     <div className={className} style={style}>
       <select
         className={classNames[UIElement.Dropdown]}
-        style={styles?.[UIElement.Dropdown]}
+        style={styles[UIElement.Dropdown]}
         value={value}
         onChange={onChange}
       >
@@ -31,14 +31,14 @@ export function Dropdown(props: DropdownProps): JSX.Element {
       </select>
       <div
         className={classNames[UIElement.CaptionLabel]}
-        style={styles?.[UIElement.CaptionLabel]}
+        style={styles[UIElement.CaptionLabel]}
         aria-hidden="true"
       >
         {caption}
         {
           <IconDropdown
             className={classNames[UIElement.DropdownIcon]}
-            style={styles?.[UIElement.DropdownIcon]}
+            style={styles[UIElement.DropdownIcon]}
           />
         }
       </div>
